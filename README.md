@@ -1,3 +1,5 @@
+![Validate Bicep](https://github.com/rahmantj93/azure-bicep-foundations/actions/workflows/validate.yml/badge.svg)
+
 # azure-bicep-foundations
 
 A parameterised Bicep template that deploys an Azure Storage account with
