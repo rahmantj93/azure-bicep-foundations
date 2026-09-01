@@ -50,3 +50,18 @@ az deployment group create \
   --template-file main.bicep \
   --parameters location=westeurope
 ```
+
+## Continuous integration
+
+Every push and pull request to `main` compiles the template with
+`az bicep build`, so syntax and schema errors are caught before merge.
+
+Deployment previews (`what-if`) are run locally rather than in CI. Automating
+them would require a service principal, and app registration is disabled in
+the Entra tenant this subscription belongs to.
+
+This is a useful illustration of Azure's two separate permission planes.
+The account used here holds the Owner role on the subscription, which grants
+full control over resources through Azure RBAC. Registering an application is
+a Microsoft Entra ID operation, governed by directory roles and tenant-level
+settings. Full authority in one plane confers nothing in the other.
